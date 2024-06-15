@@ -1,3 +1,5 @@
+using System;
+using UnityEditor;
 using UnityEngine;
 
 namespace HM_TopView.Controller
@@ -19,7 +21,9 @@ namespace HM_TopView.Controller
       private float forwardAmount;
       private float turnAmount;
       private float animSpeed;
-   
+
+      public Transform gunPos;
+      
       private void Start()
       {
          animator = GetComponent<Animator>();
@@ -104,12 +108,27 @@ namespace HM_TopView.Controller
             Vector3 direction = targetPosition - transform.position;
             direction.y = 0; 
       
+            Debug.DrawRay(transform.position,hitInfo.point, Color.magenta);
+            
             if (direction != Vector3.zero)
             {
                Quaternion targetRotation = Quaternion.LookRotation(direction);
                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotateSpeed);
+
+               Quaternion gunRotation = Quaternion.LookRotation(direction);
+               gunPos.rotation = Quaternion.Slerp(gunPos.rotation, gunRotation, Time.deltaTime);
             }
+            
+            
          }
+      }
+
+      private void OnDrawGizmos()
+      {
+         Gizmos.color = Color.red;
+         Vector3 rayEnd = transform.position + transform.forward * float.MaxValue;
+
+         Gizmos.DrawLine(transform.position, rayEnd);
       }
    }
 }

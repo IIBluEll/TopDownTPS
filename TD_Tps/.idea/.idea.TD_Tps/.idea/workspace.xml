@@ -6,6 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="863225e5-42b0-4d73-bc34-026fc276ade6" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TD_Tps/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TD_Tps/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1. Scene/PlayerMovement.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1. Scene/PlayerMovement.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2. Scripts/Player/PlayerMovement/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2. Scripts/Player/PlayerMovement/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2. Scripts/Player/PlayerMovement/TPSMovement_Test.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2. Scripts/Player/PlayerMovement/TPSMovement_Test.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FOVMapping/FOVMaps/EmptyFOVMap.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FOVMapping/FOVMaps/EmptyFOVMap.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +21,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/2. Scripts/FogWarEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2. Scripts/Player/PlayerFOV/PlayerFOV.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2. Scripts/Player/PlayerFOV/PlayerFOVEditor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/2. Scripts/Player/PlayerMovement/TPSMovement_Test.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2. Scripts/Player/PlayerManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2. Scripts/Player/PlayerWeaponSystem/PlayerGunSystem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2. Scripts/System/SingleTone.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -102,6 +109,7 @@
       <workItem from="1718158524221" duration="4132000" />
       <workItem from="1718166099421" duration="3508000" />
       <workItem from="1718246804740" duration="1207000" />
+      <workItem from="1718414728905" duration="11870000" />
     </task>
     <servers />
   </component>
