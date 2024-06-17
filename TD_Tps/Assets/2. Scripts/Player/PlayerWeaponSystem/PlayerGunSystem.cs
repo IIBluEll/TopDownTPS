@@ -111,6 +111,7 @@ namespace HM_TopView.PlayerGunSystem
         private IEnumerator SpawnTrail(TrailRenderer trail, RaycastHit hit)
         {
             float time = 0;
+            
             Vector3 startPosition = bulletStartPos.position;
 
             while (time < 1)
