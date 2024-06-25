@@ -10,11 +10,13 @@ namespace HM_TopView.PlayerGunSystem
     {
         public Transform bulletStartPos;
 
-        public TrailRenderer trail;
+        public Transform mouseFollower;
+        public GameObject bullet;
+        public GameObject bulletCasing;
         
         //총기 스탯
         public Vector3 bulletSpread = new Vector3(0.1f, 0.1f, 0.1f);
-        public float bulletRange;
+        public float shootForce;
         public float timeBetweenShooting, spread, reloadTime, timeBetweenShots;    // 발사 간격, 탄퍼짐, 사정거리, 재장전 시간, 연속 발사 간의 시간
         public int magazineSize, bulletsPerTap;                                    // 탄창 크기, 탭당 발사하는 총알 수
         public bool allowButtonHold;                                               // 연속 발사 허용 여부
@@ -70,18 +72,10 @@ namespace HM_TopView.PlayerGunSystem
             bulletShot = 0;
             readyToShoot = false;
 
-            Vector3 direction = CalculateDirectionWithSpread();
-            
-            if (Physics.Raycast(bulletStartPos.position, direction, out hit, float.MaxValue))
-            {
-                Debug.Log(hit.transform.name);
-
-                TrailRenderer trailR = Instantiate(trail, bulletStartPos.position, Quaternion.identity);
-                StartCoroutine(SpawnTrail(trailR, hit));
-            }
+            BulletMethod();
             
             // 오디오
-            // 탄피 생성
+
             bulletsLeft--;
             bulletShot++;
             
@@ -93,6 +87,18 @@ namespace HM_TopView.PlayerGunSystem
             {
                 StartCoroutine(ResetShot(timeBetweenShooting));
             }
+        }
+
+        public void BulletMethod()
+        {
+            Vector3 directionWithSpread = CalculateDirectionWithSpread();
+            
+            GameObject currentBullet = ObjectPool.Spawn(bullet, bulletStartPos.position, Quaternion.identity);
+            currentBullet.transform.forward = directionWithSpread.normalized;
+            
+            currentBullet.GetComponent<Rigidbody>().AddForce(directionWithSpread.normalized * shootForce, ForceMode.Impulse);
+            
+            // 탄피 생성 코드
         }
         
         private IEnumerator ShootWithDelay(float delay)
@@ -108,25 +114,6 @@ namespace HM_TopView.PlayerGunSystem
             readyToShoot = true; 
         }
 
-        private IEnumerator SpawnTrail(TrailRenderer trail, RaycastHit hit)
-        {
-            float time = 0;
-            
-            Vector3 startPosition = bulletStartPos.position;
-
-            while (time < 1)
-            {
-                trail.transform.position = Vector3.Lerp(startPosition, hit.point, time);
-                time += Time.deltaTime / trail.time;
-
-                yield return null;
-            }
-
-            trail.transform.position = hit.point;
-            // 명중 파티클
-            
-            Destroy(trail.gameObject, trail.time);
-        }
 
         private Vector3 CalculateDirectionWithSpread()
         {

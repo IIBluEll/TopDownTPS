@@ -108,21 +108,18 @@ namespace HM_TopView.Controller
             Vector3 direction = targetPosition - transform.position;
             direction.y = 0; 
       
-            Debug.DrawRay(transform.position,hitInfo.point, Color.magenta);
+            Debug.DrawRay(new Vector3(transform.position.x, 1.5f, transform.position.z),hitInfo.point, Color.magenta);
             
             if (direction != Vector3.zero)
             {
                Quaternion targetRotation = Quaternion.LookRotation(direction);
                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotateSpeed);
 
-               Quaternion gunRotation = Quaternion.LookRotation(direction);
-               gunPos.rotation = Quaternion.Slerp(gunPos.rotation, gunRotation, Time.deltaTime);
+               gunPos.rotation = transform.rotation;
             }
-            
-            
          }
       }
-
+      
       private void OnDrawGizmos()
       {
          Gizmos.color = Color.red;

@@ -13,7 +13,7 @@ public class Debug_MouseFollower : MonoBehaviour
       if (Physics.Raycast(ray, out hit, Mathf.Infinity))
       {
          Vector3 newPos = hit.point;
-         newPos.y = 1;
+         newPos.y = 1.5f;
 
          transform.position = newPos;
       }

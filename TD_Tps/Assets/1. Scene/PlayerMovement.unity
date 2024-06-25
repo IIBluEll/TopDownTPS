@@ -1959,6 +1959,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &1648858510
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1648858512}
+  - component: {fileID: 1648858511}
+  m_Layer: 0
+  m_Name: ObjectPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1648858511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648858510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 771706eeb1b36894e942df243db237fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Pools: []
+--- !u!4 &1648858512
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648858510}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1666004691
 GameObject:
   m_ObjectHideFlags: 0
@@ -2440,7 +2485,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -3603,9 +3648,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletStartPos: {fileID: 680982638}
-  trail: {fileID: 328621789431213768, guid: 79add8672f67a794ebf369983414737c, type: 3}
+  mouseFollower: {fileID: 2075320632}
+  bullet: {fileID: 6492320530043356559, guid: d75fe9059f0f89c4ab20e4d1bcfc6ae3, type: 3}
+  bulletCasing: {fileID: 0}
   bulletSpread: {x: 0, y: 0, z: 0}
-  bulletRange: 100
+  shootForce: 10
   timeBetweenShooting: 0.1
   spread: 0
   reloadTime: 2
@@ -5598,3 +5645,4 @@ SceneRoots:
   - {fileID: 1404411791}
   - {fileID: 1988503047}
   - {fileID: 2075320632}
+  - {fileID: 1648858512}
