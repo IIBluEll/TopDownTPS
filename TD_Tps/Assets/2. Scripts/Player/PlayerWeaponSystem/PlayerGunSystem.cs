@@ -9,10 +9,12 @@ namespace HM_TopView.PlayerGunSystem
     public class PlayerGunSystem : MonoBehaviour
     {
         public Transform bulletStartPos;
-
+        public Transform casingStartPos;
+        
         public Transform mouseFollower;
         public GameObject bullet;
         public GameObject bulletCasing;
+        public GameObject muzzleFlash;
         
         //총기 스탯
         public Vector3 bulletSpread = new Vector3(0.1f, 0.1f, 0.1f);
@@ -73,6 +75,12 @@ namespace HM_TopView.PlayerGunSystem
             readyToShoot = false;
 
             BulletMethod();
+
+            if (muzzleFlash != null)
+            {
+                muzzleFlash.SetActive(true);
+                StartCoroutine(ReturnMuzzleFlash(.05f));
+            }
             
             // 오디오
 
@@ -99,6 +107,14 @@ namespace HM_TopView.PlayerGunSystem
             currentBullet.GetComponent<Rigidbody>().AddForce(directionWithSpread.normalized * shootForce, ForceMode.Impulse);
             
             // 탄피 생성 코드
+            GameObject currentCasing = ObjectPool.Spawn(bulletCasing, casingStartPos.position, Quaternion.identity);
+            currentCasing.GetComponent<BulletCasing>().SetUpBulletCasing(casingStartPos.transform.right);
+        }
+
+        private IEnumerator ReturnMuzzleFlash(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            muzzleFlash.SetActive(false);
         }
         
         private IEnumerator ShootWithDelay(float delay)

@@ -18,7 +18,7 @@ public class BulletSystem : MonoBehaviour
     public float setMaxLifeTime;
     
     protected int collisions;
-    private bool isDestroying = false;
+    protected bool isDestroying = false;
     private PhysicMaterial physics_mat;
 
     protected virtual void OnEnable()
@@ -36,9 +36,7 @@ public class BulletSystem : MonoBehaviour
             bounceCombine = PhysicMaterialCombine.Maximum
         };
         
-        //GetComponent<CapsuleCollider>().material = physics_mat;
-        GetComponent<SphereCollider>().material = physics_mat;
-        
+        GetComponent<CapsuleCollider>().material = physics_mat;
     }
     
     protected void Update()
@@ -64,7 +62,12 @@ public class BulletSystem : MonoBehaviour
         
     }
     
-    protected virtual void OnTriggerEnter(Collider other)
+    protected virtual void BulletHitObstacle()
+    {
+        
+    }
+
+    protected virtual void OnCollisionEnter(Collision other)
     {
         
     }
